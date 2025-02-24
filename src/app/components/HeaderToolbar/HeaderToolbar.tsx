@@ -5,6 +5,7 @@ import Link from "next/link";
 
 export const HeaderToolbar = () => {
     const [user] = useAuthState(auth);
+    console.log(user?.uid)
     const userSession = sessionStorage.getItem('user')
    
     if (!user && !userSession) {
@@ -17,10 +18,10 @@ export const HeaderToolbar = () => {
     } else {
   return (
             <div>
-                <button>User</button>
+          <button>{ user?.uid}</button>
                 <button onClick={() => {
-                    signOut(auth)
-                    sessionStorage.removeItem('user')
+              signOut(auth);
+          
                 }
                 }>Log Out</button>
             </div>
