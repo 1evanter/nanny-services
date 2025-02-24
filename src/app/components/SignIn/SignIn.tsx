@@ -23,7 +23,6 @@ export const SignIn = () => {
     try {
         const res = await signInWithEmailAndPassword(email, password);
         console.log(res)
-        sessionStorage.setItem('user', 'true')
       router.push("/");
     } catch (error) {
       alert(error);
