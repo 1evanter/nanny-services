@@ -23,15 +23,10 @@ const {
     
   const onSubmit = async ({email, password}: Inputs) => {
     try {
-        const res = await createUserWithEmailAndPassword(email, password);
-        if (res) {
-          alert("Реєстрація успішна!");
+        const res = await createUserWithEmailAndPassword(email, password);  
         console.log(res)
+        sessionStorage.setItem('user', 'true')
      router.push("/");   
-        } else {
-            return (<p>pizdec</p>)
-        }
-       
     } catch (error) {
       alert(error);
     }
