@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/app/firebase/config"
@@ -8,7 +10,8 @@ export const Header = () => {
 
     return (
         <header>
-            <h1>Nanny.Services</h1>
+            <h1>
+               <Link href="/">Nanny.Services</Link> </h1>
             <nav>
                 <ul>
                     <li>
