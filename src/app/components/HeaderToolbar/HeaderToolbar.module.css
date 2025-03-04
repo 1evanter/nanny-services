@@ -1,0 +1,12 @@
+.buttonsContainer {
+    display: flex;
+    gap: 8px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.link {
+    padding: 14px 40px;
+    border: 1px solid rgba(251, 251, 251, 0.4);
+    border-radius: 30px;
+}
