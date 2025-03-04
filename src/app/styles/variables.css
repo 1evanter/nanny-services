@@ -1,0 +1,9 @@
+:root {
+    --bg-color: rgb(243, 243, 243);
+    --accent-color: rgb(16, 57, 49);
+    --second-accent-color: rgba(16, 57, 49, 0.2);
+    --text-color-white: rgb(251, 251, 251);
+    --text-color-main: rgba(17, 16, 28, 0.5);
+    --text-color-secondary: rgb(17, 26, 28);
+    --text-color-filter: rgba(17, 16, 28, 0.3);
+}
