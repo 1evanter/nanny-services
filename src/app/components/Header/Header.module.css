@@ -1,0 +1,23 @@
+.header {
+    background-color: var(--accent-color);
+}
+
+.title {
+    font-size: 24px;
+}
+
+.container {
+    max-width: 1184px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    color: var(--text-color-white);
+}
+
+.list {
+    display: flex;
+    font-size: 16px;
+    font-weight: 400;
+    gap: 40px;
+}

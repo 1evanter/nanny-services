@@ -4,16 +4,18 @@ import Link from "next/link"
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/app/firebase/config"
 import { HeaderToolbar } from "../HeaderToolbar/HeaderToolbar";
+import styles from "./Header.module.css"
 
 export const Header = () => {
   const [user] = useAuthState(auth);
 
     return (
-        <header>
-            <h1>
+        <header className={styles.header}>
+            <div className={styles.container}>
+            <h1 className={styles.title}>
                <Link href="/">Nanny.Services</Link> </h1>
             <nav>
-                <ul>
+                <ul className={styles.list}>
                     <li>
                         <Link href="/">Home</Link>
                     </li>
@@ -27,7 +29,7 @@ export const Header = () => {
             </nav>
 
             <HeaderToolbar/>
-           
+           </div>
         </header>
     )
 }
