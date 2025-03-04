@@ -6,11 +6,13 @@
     display: flex;
 }
 
+
 .titleWrapper {
+    max-width: 517px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     gap: 64px;
     margin: 0 auto;
 
@@ -28,6 +30,9 @@
     font-size: 28px;
 }
 
-.button {
+.link {
+    color: var(--text-color-white);
+    padding: 18px 50px;
+    border: 1px solid rgba(251, 251, 251, 0.4);
     border-radius: 30px;
 }

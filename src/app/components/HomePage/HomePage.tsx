@@ -7,9 +7,9 @@ export const HomePage = () => {
         <div className={styles.wrapper}>
         <div className={styles.titleWrapper}>   
         <h2 className={styles.title}>Make Life Easier for the Family: <br/> <span className={styles.span}>Find Babysitters Online for All Occasions</span></h2>
-        <Link href="/nannies">Get Started</Link>       
+        <Link href="/nannies" className={styles.link}>Get Started</Link>       
             </div>
-            <Image src="/images/hero-image.jpg" alt="Woman with baby reading book" width={700} height={736} />
+                <Image src="/images/hero-image.jpg" alt="Woman with baby reading book" width={700} height={736} />               
         </div>
         
     )
