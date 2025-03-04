@@ -1,0 +1,33 @@
+.wrapper {
+    max-width: 1376px;
+    margin: 0 auto;
+    background-color: var(--accent-color);
+    border-radius: 30px;
+    display: flex;
+}
+
+.titleWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 64px;
+    margin: 0 auto;
+
+}
+
+.title {
+    color: var(--text-color-white);
+    margin-bottom: 28px;
+    font-size: 70px;
+    font-weight: 500;
+    letter-spacing: -3%;
+}
+
+.span {
+    font-size: 28px;
+}
+
+.button {
+    border-radius: 30px;
+}
