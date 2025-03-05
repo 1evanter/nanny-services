@@ -4,7 +4,7 @@ export type Review = {
   reviewer: string;
 };
 
-export type Nannie = {
+export type Nanny = {
   name: string;
     avatar_url: string;
     birthday: string;
