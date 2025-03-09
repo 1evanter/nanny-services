@@ -1,0 +1,36 @@
+.list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 48px;
+    gap: 25px;
+}
+
+.infoContainer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.infoContainer p {
+    color: var(--text-color-secondary);
+}
+
+.profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 100px;
+    background-color: var(--second-accent-color);
+    color: var(--accent-color);
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+    color: var(--text-color-secondary);
+}
