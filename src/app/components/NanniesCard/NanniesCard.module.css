@@ -1,0 +1,47 @@
+.container {
+    padding: 24px;
+    display: flex;
+    gap: 24px;
+}
+
+.image {
+    border-radius: 15px;
+}
+
+.imageContainer {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(240, 63, 59, 0.2);
+    border-radius: 30px;
+}
+
+/* .infoContainer {
+    display: flex;
+} */
+
+.basicInfoContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.basicInfo {
+    display: flex;
+    gap: 32px;
+}
+
+.name {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.name>span {
+    font-size: 16px;
+    color: var(--text-color-main);
+}
+
+.mainInfo {
+    display: flex;
+}
