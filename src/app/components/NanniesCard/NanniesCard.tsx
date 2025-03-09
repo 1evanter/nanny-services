@@ -7,6 +7,16 @@ type NannyCardProps = {
   nanny: Nanny;
 };
 
+const getAge = (dateString: string): number => {
+  const birthDate = new Date(dateString);
+  const today = new Date();
+  const age = today.getFullYear() - birthDate.getFullYear();
+  return (today.getMonth() > birthDate.getMonth() || 
+          (today.getMonth() === birthDate.getMonth() && today.getDate() >= birthDate.getDate())) 
+    ? age 
+    : age - 1;
+};
+
 export const NanniesCard = ({nanny}: NannyCardProps) => {
     
     const {
@@ -24,6 +34,8 @@ export const NanniesCard = ({nanny}: NannyCardProps) => {
     reviews,
   } = nanny;
 
+    const age = getAge(birthday);
+    
     return (
         <>
             <div className={styles.container}>
@@ -49,7 +61,7 @@ export const NanniesCard = ({nanny}: NannyCardProps) => {
                 </div>
                    
                 <div className={styles.mainInfo}>
-                    <p>Age: {birthday}</p>
+                    <p>Age: {age}</p>
                     <p>Experience: {experience}</p>
                     <p>Kids age: {kids_age}</p>
                     <p>Education: {education}</p>
