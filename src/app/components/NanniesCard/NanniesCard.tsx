@@ -2,6 +2,7 @@ import Image from "next/image";
 import {Nanny} from "../../../types/nannies.types"
 import { NanniesReviews } from "../NanniesReviews/NanniesReviews";
 import styles from "./NanniesCard.module.css"
+import { useState } from "react";
 
 type NannyCardProps = {
   nanny: Nanny;
@@ -34,6 +35,7 @@ export const NanniesCard = ({nanny}: NannyCardProps) => {
     reviews,
   } = nanny;
 
+    const [showReviews, setShowReviews] = useState(false);
     const age = getAge(birthday);
     
     return (
@@ -48,27 +50,30 @@ export const NanniesCard = ({nanny}: NannyCardProps) => {
           height={96}
                     />
                 </div>
-                <div
-                    // className={styles.infoContainer}
-                >
+                <div>
                 <div className={styles.basicInfoContainer}>
-                   <p className={styles.name}><span>Nanny</span> <br />{name}</p>
+                   <p className={styles.name}>Nanny <br /><span>{name}</span></p>
                     <div className={styles.basicInfo}>
                         <p>{location}</p>
                         <p>Rating: {rating}</p>
-                        <p>Price / 1 hour: {price_per_hour}</p>
+                        <p>Price / 1 hour: <span className={styles.price}>{price_per_hour}$</span></p>
                     </div>
                 </div>
                    
                 <div className={styles.mainInfo}>
-                    <p>Age: {age}</p>
-                    <p>Experience: {experience}</p>
-                    <p>Kids age: {kids_age}</p>
-                    <p>Education: {education}</p>
-                    <p>Characters: {characters}</p>
-                    <p>{about}</p>
+                    <p>Age: <span className={styles.age}>{age}</span></p>
+                    <p>Experience: <span>{experience}</span></p>
+                    <p>Kids age: <span>{kids_age}</span></p>
+                    <p>Education: <span>{education}</span></p>
+                    <p>Characters: {characters.map((item, index) => (
+  <span key={index}>{item}{index < characters.length - 1 ? ", " : ""}</span>
+))}</p>
                 </div>
-                    <div>Reviews: {<NanniesReviews reviews={reviews} />}</div>
+                    <p className={styles.about}>{about}</p>
+
+                    {showReviews ? 
+                <NanniesReviews reviews={reviews}/>    
+               :  <button type="button" className={styles.button} onClick={() => setShowReviews(true)}>Read more</button> }                  
                     </div>
      </div>
         </>
