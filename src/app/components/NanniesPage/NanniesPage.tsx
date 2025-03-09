@@ -3,6 +3,7 @@
 import { NanniesCard } from "../NanniesCard/NanniesCard"
 import { Nanny } from "@/types/nannies.types";
 import { useEffect, useState } from "react";
+import styles from "./NanniesPage.module.css"
 
 type NanniesProps = {
   initialData: Nanny[];
@@ -19,8 +20,8 @@ export const NanniesPage = ({ initialData }: NanniesProps) => {
 
 
     return (
-        <div>
-            <ul>
+        <div className={styles.container}>
+            <ul className={styles.list}>
                 {nannies.map(nanny => (
                     <li key={nanny.id}>
                         <NanniesCard nanny={ nanny} />
