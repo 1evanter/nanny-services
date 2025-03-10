@@ -23,8 +23,8 @@ export default function RootLayout({
         <Header />
         <main>
           {children}
-        {modal}
         </main>
+        {modal}
       </body>
     </html>
   );

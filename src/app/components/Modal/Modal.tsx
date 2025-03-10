@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import {  useRouter } from "next/navigation";
 import Image from "next/image";
 import styles from "./Modal.module.css";
 
@@ -11,7 +11,7 @@ type ModalProps = {
 
 export const Modal = ({ children }: ModalProps) => {
   const router = useRouter();
-const pathname = usePathname();
+
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -22,7 +22,7 @@ const pathname = usePathname();
     return () => document.removeEventListener("keydown", handleEscape);
   }, [router]);
 
- if (pathname !== "/sign-up" && pathname !== "/sign-in") return null;
+
 
    return (
         <div className={styles.overlay} onClick={() => router.back()}>
