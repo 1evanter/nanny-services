@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import {auth} from '@/app/firebase/config'
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useRouter } from "next/navigation";
+import styles from "./SignIn.module.css"
 
 type Inputs = {
   email: string;
@@ -31,14 +32,14 @@ export const SignIn = () => {
 
   return (
     <div>
-          <h2>Log In</h2>
+          <h2 className={styles.title}>Log In</h2>
           <p>Welcome back! Please enter your credentials to access your account and continue your babysitter search.</p>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <input {...register("email")} placeholder="Email"/>
       <input {...register("password")} placeholder="Password"/>
         {errors.password && <p>{errors.password.message}</p>}
 
-        <button type="submit">Log In</button>
+        <button className={styles.submit} type="submit">Log In</button>
       </form>
     </div>
   );
