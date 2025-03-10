@@ -6,7 +6,6 @@ import styles from "./HeaderToolbar.module.css"
 
 export const HeaderToolbar = () => {
     const [user] = useAuthState(auth);
-    console.log(user?.uid)
     const userSession = sessionStorage.getItem('user')
    
     if (!user && !userSession) {
