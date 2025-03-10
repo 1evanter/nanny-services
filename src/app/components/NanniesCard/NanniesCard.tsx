@@ -54,10 +54,11 @@ export const NanniesCard = ({nanny}: NannyCardProps) => {
                 <div className={styles.basicInfoContainer}>
                    <p className={styles.name}>Nanny <br /><span>{name}</span></p>
                     <div className={styles.basicInfo}>
-                        <p>{location}</p>
-                        <p>Rating: {rating}</p>
-                        <p>Price / 1 hour: <span className={styles.price}>{price_per_hour}$</span></p>
-                    </div>
+                        <div className={styles.iconBox}> <Image src="/icons/map.svg" alt="map pin icon" width={16} height={16}/> <p>{location}</p> </div>
+                   <div className={styles.iconBox}> <Image src="/icons/star.svg" alt="star icon" width={16} height={16}/>   <p>Rating: {rating}</p></div> 
+                        <div>Price / 1 hour: <span className={styles.price}>{price_per_hour}$</span></div>
+                        <button type="button"><Image src="/icons/heart.svg" alt="favorite icon" width={26} height={26}/></button>
+                        </div>
                 </div>
                    
                 <div className={styles.mainInfo}>

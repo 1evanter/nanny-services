@@ -30,6 +30,11 @@
     color: var(--text-color-secondary);
 }
 
+.iconBox {
+    display: flex;
+    gap: 8px;
+}
+
 .price {
     color: limegreen;
 }
