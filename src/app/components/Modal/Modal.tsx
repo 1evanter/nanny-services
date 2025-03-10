@@ -26,7 +26,7 @@ export const Modal = ({ children }: ModalProps) => {
         <div className={styles.overlay} onClick={() => router.back()}>
             <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
                 {children}
-                <button className={styles.close} onClick={() => router.back()}>
+                <button className={styles.closeButton} onClick={() => router.back()}>
                     <Image src="/icons/x.svg" alt="close modal" width={32} height={32} />
                 </button>
             </div>
