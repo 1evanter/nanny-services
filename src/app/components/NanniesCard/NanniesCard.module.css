@@ -22,26 +22,43 @@
 .basicInfoContainer {
     display: flex;
     justify-content: space-between;
+    align-items: start;
+}
+
+.box {
+    display: flex;
+    gap: 50px;
+    align-items: center;
 }
 
 .basicInfo {
     display: flex;
-    gap: 32px;
     color: var(--text-color-secondary);
 }
 
-.iconBox {
-    display: flex;
-    gap: 8px;
+.icon {
+    margin-right: 8px;
+}
+
+.line {
+    margin-right: 16px;
+    margin-left: 16px;
+    color: var(--text-color-filter);
 }
 
 .price {
     color: limegreen;
 }
 
+.favoriteIcon {
+    border: none;
+
+}
+
 .name {
-    font-weight: 500;
-    font-size: 16px;
+    margin-top: 8px;
+    font-size: 24px;
+    color: var(--text-color-secondary);
 }
 
 .name>span {
