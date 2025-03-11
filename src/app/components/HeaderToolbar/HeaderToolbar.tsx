@@ -18,8 +18,8 @@ export const HeaderToolbar = () => {
     } else {
   return (
             <div className={styles.buttonsContainer}>
-          <button>{ user?.uid}</button>
-                <button onClick={() => {
+          <button className={styles.link}>{ user?.uid}</button>
+                <button className={styles.link} onClick={() => {
               signOut(auth);
           
                 }
