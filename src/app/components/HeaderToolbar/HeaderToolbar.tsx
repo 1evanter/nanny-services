@@ -3,12 +3,19 @@ import { auth } from "@/app/firebase/config"
 import { signOut } from "firebase/auth";
 import Link from "next/link";
 import styles from "./HeaderToolbar.module.css"
+import { useEffect, useState } from "react";
 
 export const HeaderToolbar = () => {
-    const [user] = useAuthState(auth);
+  const [user] = useAuthState(auth);
+  const [storedUser, setStoredUser] = useState<string | null>(null);
+
+   useEffect(() => {
     const userSession = sessionStorage.getItem('user')
+    setStoredUser(userSession);
+  }, []);
    
-    if (!user && !userSession) {
+   
+    if (!user && !storedUser) {
         return (
             <div className={styles.buttonsContainer}>
                 <Link href="/sign-in" className={styles.link}>Log In</Link>
