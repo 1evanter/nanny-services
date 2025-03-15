@@ -5,7 +5,9 @@ import styles from "./NanniesCard.module.css"
 import { useState } from "react";
 
 type NannyCardProps = {
-  nanny: Nanny;
+    nanny: Nanny;
+      isFavorite: boolean;
+  toggleFavorite: (id: string) => void;
 };
 
 const getAge = (dateString: string): number => {
@@ -18,9 +20,10 @@ const getAge = (dateString: string): number => {
     : age - 1;
 };
 
-export const NanniesCard = ({nanny}: NannyCardProps) => {
+export const NanniesCard = ({nanny, toggleFavorite, isFavorite}: NannyCardProps) => {
     
     const {
+        id,
     name,
         avatar_url,
     birthday,
@@ -59,7 +62,7 @@ export const NanniesCard = ({nanny}: NannyCardProps) => {
                    <Image className={styles.icon} src="/icons/star.svg" alt="star icon" width={16} height={16}/>   <p>Rating: {rating}</p> <span className={styles.line}>|</span>
                         <p>Price / 1 hour: <span className={styles.price}>{price_per_hour}$</span></p>
                         </div>
-                            <button className={styles.favoriteIcon} type="button"><Image src="/icons/heart.svg" alt="favorite icon" width={26} height={26} /></button>
+                            <button onClick={() => toggleFavorite?.(id)} className={styles.favoriteIcon} type="button"><Image src={isFavorite ? "/icons/full-heart.svg" : "/icons/heart.svg" }alt="favorite icon" width={26} height={26} /></button>
                             </div>
                 </div>
                    

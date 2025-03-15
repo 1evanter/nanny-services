@@ -1,23 +1,23 @@
-"use client"
-import React from "react";
-import { NanniesCard } from "../NanniesCard/NanniesCard"
-import { Nanny } from "@/types/nannies.types";
+"use client";
+
 import { useEffect, useState } from "react";
-import styles from "./NanniesPage.module.css"
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth, firestoreDB } from "@/app/firebase/config";
+import { auth, firestoreDB} from "@/app/firebase/config";
 import { collection, doc, getDoc, setDoc, deleteDoc } from "firebase/firestore";
+import { NanniesCard } from "../NanniesCard/NanniesCard";
+import { Nanny } from "@/types/nannies.types";
 import { getNannies } from "@/app/(server)/api";
 
-export const NanniesPage = () => {
-   const [nannies, setNannies] = useState<Nanny[]>([]);
-  const [favorites, setFavorites] = useState<string[]>([]);
-  const [user] = useAuthState(auth);
 
-  useEffect(() => {
+export const FavoritesPage = () => {
+  const [user] = useAuthState(auth);
+  const [nannies, setNannies] = useState<Nanny[]>([]);
+  const [favorites, setFavorites] = useState<string[]>([]);
+
+   useEffect(() => {
     const fetchNannies = async () => {
-      const data = await getNannies();
-      setNannies(Object.keys(data).map((key) => ({ id: key, ...data[key] })));
+      const nanniesData = await getNannies();
+      setNannies(Object.keys(nanniesData).map((key) => ({ id: key, ...nanniesData[key] })));
     };
     fetchNannies();
   }, []);
@@ -37,12 +37,13 @@ export const NanniesPage = () => {
     }
   }, [user]);
 
+
   const toggleFavorite = async (id: string) => {
     if (!user) {
       alert("Будь ласка, увійдіть у систему, щоб додати в обране.");
       return;
     }
-
+    
     let updatedFavorites;
     if (favorites.includes(id)) {
       updatedFavorites = favorites.filter((fav) => fav !== id);
@@ -51,7 +52,7 @@ export const NanniesPage = () => {
     }
     setFavorites(updatedFavorites);
 
-    const docRef = doc(collection(firestoreDB, "favorites"), user.uid);
+  const docRef = doc(firestoreDB, "favorites", user.uid);
     if (updatedFavorites.length > 0) {
       await setDoc(docRef, { nannies: updatedFavorites });
     } else {
@@ -59,16 +60,21 @@ export const NanniesPage = () => {
     }
   };
 
-    return (
-        <div className={styles.container}>
-            <ul className={styles.list}>
-                {nannies.map(nanny => (
-                    <li key={nanny.id}>
-                        <NanniesCard nanny={ nanny}    isFavorite={favorites.includes(nanny.id)} 
-  toggleFavorite={toggleFavorite}/>
-                  </li>  
-                ))}
-            </ul>
-        </div>
-    )
+  return (
+    <div>
+          <h1>Обрані няні</h1>
+          <ul>
+      {nannies
+        .filter((nanny) => favorites.includes(nanny.id))
+                  .map((nanny) => (
+            <li   key={nanny.id}>
+           <NanniesCard 
+  nanny={nanny} 
+  isFavorite={favorites.includes(nanny.id)} 
+  toggleFavorite={toggleFavorite} 
+                          />
+                      </li>
+        ))}</ul>
+    </div>
+  );
 }
