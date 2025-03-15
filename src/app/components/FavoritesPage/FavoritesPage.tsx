@@ -7,7 +7,7 @@ import { collection, doc, getDoc, setDoc, deleteDoc } from "firebase/firestore";
 import { NanniesCard } from "../NanniesCard/NanniesCard";
 import { Nanny } from "@/types/nannies.types";
 import { getNannies } from "@/app/(server)/api";
-
+import styles from "./FavoritesPage.module.css"
 
 export const FavoritesPage = () => {
   const [user] = useAuthState(auth);
@@ -61,9 +61,8 @@ export const FavoritesPage = () => {
   };
 
   return (
-    <div>
-          <h1>Обрані няні</h1>
-          <ul>
+    <div className={styles.container}>
+          <ul className={styles.list}>
       {nannies
         .filter((nanny) => favorites.includes(nanny.id))
                   .map((nanny) => (
