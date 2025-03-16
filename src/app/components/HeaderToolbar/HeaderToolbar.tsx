@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 
 export const HeaderToolbar = () => {
   const [user] = useAuthState(auth);
+  console.log(user)
   const [storedUser, setStoredUser] = useState<string | null>(null);
 
    useEffect(() => {
@@ -25,7 +26,7 @@ export const HeaderToolbar = () => {
     } else {
   return (
             <div className={styles.buttonsContainer}>
-          <button className={styles.link}>{ user?.uid}</button>
+          <button className={styles.link}>{ user?.email}</button>
                 <button className={styles.link} onClick={() => {
               signOut(auth);
           
