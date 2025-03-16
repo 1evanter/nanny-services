@@ -33,7 +33,7 @@ export const SignIn = () => {
   return (
     <div>
           <h2 className={styles.title}>Log In</h2>
-          <p>Welcome back! Please enter your credentials to access your account and continue your babysitter search.</p>
+          <p className={styles.subtitle}>Welcome back! Please enter your credentials to access your account and continue your babysitter search.</p>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
       <input {...register("email")} placeholder="Email"/>
       <input {...register("password")} placeholder="Password"/>

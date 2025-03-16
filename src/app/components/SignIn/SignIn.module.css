@@ -1,6 +1,12 @@
 .title {
+    font-size: 40px;
+    font-weight: 500;
     color: var(--text-color-secondary);
     margin-bottom: 20px;
+}
+
+.subtitle {
+    font-weight: 400;
 }
 
 .form {
