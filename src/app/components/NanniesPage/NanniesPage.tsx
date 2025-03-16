@@ -12,6 +12,7 @@ import { getNannies } from "@/app/(server)/api";
 export const NanniesPage = () => {
    const [nannies, setNannies] = useState<Nanny[]>([]);
   const [favorites, setFavorites] = useState<string[]>([]);
+  const [loadNannies, setLoadNannies] = useState(3)
   const [user] = useAuthState(auth);
 
   useEffect(() => {
@@ -36,6 +37,10 @@ export const NanniesPage = () => {
       setFavorites([]);
     }
   }, [user]);
+
+  const handleLoadMore = () => {
+     setLoadNannies(loadNannies + 3);
+  }
 
   const toggleFavorite = async (id: string) => {
     if (!user) {
@@ -62,13 +67,22 @@ export const NanniesPage = () => {
     return (
         <div className={styles.container}>
             <ul className={styles.list}>
-                {nannies.map(nanny => (
+                {nannies.slice(0, loadNannies).map(nanny => (
                     <li key={nanny.id}>
                         <NanniesCard nanny={ nanny}    isFavorite={favorites.includes(nanny.id)} 
   toggleFavorite={toggleFavorite}/>
                   </li>  
                 ))}
-            </ul>
+        </ul>
+         {loadNannies < nannies.length && (
+        <button
+          type="button"
+            onClick={handleLoadMore}
+            className={styles.button}
+        >
+          Load more
+        </button>
+      )}
         </div>
     )
 }
