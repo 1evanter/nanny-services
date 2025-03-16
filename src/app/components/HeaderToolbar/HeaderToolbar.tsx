@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 
 export const HeaderToolbar = () => {
   const [user] = useAuthState(auth);
-  console.log(user)
   const [storedUser, setStoredUser] = useState<string | null>(null);
 
    useEffect(() => {
