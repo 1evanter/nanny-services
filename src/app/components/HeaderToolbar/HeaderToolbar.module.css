@@ -7,7 +7,7 @@
 
 .link {
     padding: 14px 40px;
-    border: 1px solid rgba(251, 251, 251, 0.4);
+    border: 1px solid var(--border-color);
     border-radius: 30px;
     background-color: transparent;
     color: var(--text-color-white);
