@@ -34,4 +34,5 @@ ul {
 
 button {
   cursor: pointer;
+  border-radius: 30px;
 }
