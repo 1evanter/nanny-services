@@ -14,7 +14,4 @@
 .button {
     margin: 64px auto;
     padding: 14px 40px;
-    background-color: var(--accent-color);
-    border-color: transparent;
-    color: var(--text-color-white);
 }

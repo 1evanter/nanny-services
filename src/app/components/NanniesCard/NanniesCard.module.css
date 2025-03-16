@@ -52,7 +52,11 @@
 
 .favoriteIcon {
     border: none;
+    background-color: transparent;
+}
 
+.favoriteIcon:hover {
+    background-color: transparent;
 }
 
 .name {
@@ -96,7 +100,12 @@
     font-size: 16px;
     font-weight: 500;
     color: var(--text-color-secondary);
+    background-color: transparent;
     text-decoration: underline;
     border: none;
     cursor: pointer;
+}
+
+.button:hover {
+    background-color: transparent;
 }
