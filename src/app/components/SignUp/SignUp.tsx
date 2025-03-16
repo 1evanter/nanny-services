@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form"
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth"
 import {auth} from '@/app/firebase/config'
 import { useRouter } from "next/navigation"
+import styles from "./SignUp.module.css"
 
 type Inputs = {
     name: string;
@@ -33,10 +34,10 @@ const {
 
 
   return (
- 
-      <form onSubmit={handleSubmit(onSubmit)}>
-          <h2>Registration</h2>
-          <p>Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the following information.</p>
+    <div>
+    <h2 className={styles.title}>Registration</h2>
+    <p className={styles.subtitle}>Thank you for your interest in our platform! In order to register, we need some information. Please provide us with the following information.</p>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
  
           <input {...register("name")} placeholder="Name" />
       <input {...register("email")} placeholder="Email"/>
@@ -44,9 +45,10 @@ const {
 
       {errors.password && <span>This field is required</span>}
 
-      <button type="submit">
+      <button className={styles.submit} type="submit">
         Sign Up
       </button>
-    </form>
+      </form>
+    </div>
   )
 }
