@@ -40,7 +40,9 @@
     border: 1px solid var(--border-color);
     border-radius: 30px;
     display: flex;
+    align-items: center;
     gap: 18px;
+    font-size: 20px;
 }
 
 .amountBox {
