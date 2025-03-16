@@ -1,4 +1,4 @@
-import { Review } from "@/types/nannies.types";
+import { Nanny, Review } from "@/types/nannies.types";
 import Image from "next/image";
 import styles from "./NanniesReview.module.css"
 import { useState } from "react";
@@ -7,9 +7,10 @@ import { MakeAnAppointment } from "../MakeAnAppointment/MakeAnAppointment";
 
 type NanniesReviewsProps = {
   reviews: Review[];
+  nanny: Nanny;
 };
 
-export const NanniesReviews = ({ reviews }: NanniesReviewsProps) => {
+export const NanniesReviews = ({ reviews, nanny }: NanniesReviewsProps) => {
  const [isModalOpen, setIsModalOpen] = useState(false)
  
   const toggleModalOpen = () => {
@@ -40,7 +41,7 @@ export const NanniesReviews = ({ reviews }: NanniesReviewsProps) => {
       <button onClick={toggleModalOpen} className={styles.button} type="button">Make an appointment</button>
       </div>
       {isModalOpen && <Modal isModalOpen={ isModalOpen} toggleModalOpen={toggleModalOpen} stayOnPage={true}>
-        <MakeAnAppointment/>
+        <MakeAnAppointment nanny={ nanny} />
       </Modal>}
      
       </>

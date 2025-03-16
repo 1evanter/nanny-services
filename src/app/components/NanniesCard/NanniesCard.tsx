@@ -78,7 +78,7 @@ export const NanniesCard = ({nanny, toggleFavorite, isFavorite}: NannyCardProps)
                     <p className={styles.about}>{about}</p>
 
                     {showReviews ? 
-                <NanniesReviews reviews={reviews}/>    
+                        <NanniesReviews reviews={reviews} nanny={ nanny} />    
                :  <button type="button" className={styles.button} onClick={() => setShowReviews(true)}>Read more</button> }                  
                     </div>
      </div>
