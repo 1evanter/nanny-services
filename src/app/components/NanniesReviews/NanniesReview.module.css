@@ -35,3 +35,10 @@
     margin-top: 4px;
     color: var(--text-color-secondary);
 }
+
+.button {
+    color: var(--text-color-white);
+    padding: 14px 28px;
+    background-color: var(--accent-color);
+    border-color: transparent;
+}

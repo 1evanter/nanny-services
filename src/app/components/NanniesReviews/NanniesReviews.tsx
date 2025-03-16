@@ -1,13 +1,24 @@
 import { Review } from "@/types/nannies.types";
 import Image from "next/image";
 import styles from "./NanniesReview.module.css"
+import { useState } from "react";
+import { Modal } from "../Modal/Modal";
+import { MakeAnAppointment } from "../MakeAnAppointment/MakeAnAppointment";
 
 type NanniesReviewsProps = {
   reviews: Review[];
 };
 
 export const NanniesReviews = ({ reviews }: NanniesReviewsProps) => {
-    return (
+ const [isModalOpen, setIsModalOpen] = useState(false)
+ 
+  const toggleModalOpen = () => {
+    setIsModalOpen(!isModalOpen)
+  }
+  
+  return (
+    <>
+      <div>
         <ul className={styles.list}>
             {reviews.map(({ comment, rating, reviewer }, index) => 
             (
@@ -25,6 +36,13 @@ export const NanniesReviews = ({ reviews }: NanniesReviewsProps) => {
         </li>
                )               
             )}
-</ul>
+      </ul>
+      <button onClick={toggleModalOpen} className={styles.button} type="button">Make an appointment</button>
+      </div>
+      {isModalOpen && <Modal isModalOpen={ isModalOpen} toggleModalOpen={toggleModalOpen} stayOnPage={true}>
+        <MakeAnAppointment/>
+      </Modal>}
+     
+      </>
     )
 }
