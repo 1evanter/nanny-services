@@ -11,10 +11,4 @@
     border-radius: 30px;
     background-color: transparent;
     color: var(--text-color-white);
-    transition: var(--transition);
-}
-
-.link:hover {
-    border-color: var(--accent-color);
-    color: var(--text-color-secondary);
 }
