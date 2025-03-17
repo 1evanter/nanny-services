@@ -8,11 +8,15 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, firestoreDB } from "@/app/firebase/config";
 import { collection, doc, getDoc, setDoc, deleteDoc } from "firebase/firestore";
 import { getNannies } from "@/app/(server)/api";
+import { SelectChangeEvent } from '@mui/material';
+import { getFilteredNannies } from "@/app/(server)/api";
+import { Filter } from "../Filter/Filter";
 
 export const NanniesPage = () => {
    const [nannies, setNannies] = useState<Nanny[]>([]);
   const [favorites, setFavorites] = useState<string[]>([]);
-  const [loadNannies, setLoadNannies] = useState(3)
+  const [loadNannies, setLoadNannies] = useState(3);
+  const [filter, setFilter] = useState('');
   const [user] = useAuthState(auth);
 
   useEffect(() => {
@@ -37,6 +41,13 @@ export const NanniesPage = () => {
       setFavorites([]);
     }
   }, [user]);
+
+ const filteredNannies = getFilteredNannies(nannies, filter);
+
+  const handleFilter = (e: SelectChangeEvent) => {
+    setFilter(e.target.value);
+    setLoadNannies(3);
+  };
 
   const handleLoadMore = () => {
      setLoadNannies(loadNannies + 3);
@@ -65,9 +76,10 @@ export const NanniesPage = () => {
   };
 
     return (
-        <div className={styles.container}>
+      <div className={styles.container}>
+        <Filter handleFilter={handleFilter} filter={ filter} />
             <ul className={styles.list}>
-                {nannies.slice(0, loadNannies).map(nanny => (
+                {filteredNannies?.slice(0, loadNannies).map(nanny => (
                     <li key={nanny.id}>
                         <NanniesCard nanny={ nanny}    isFavorite={favorites.includes(nanny.id)} 
   toggleFavorite={toggleFavorite}/>
