@@ -17,8 +17,3 @@
     color: var(--text-color-white) !important;
     border-radius: 14px !important;
 }
-
-.button {
-    margin: 64px auto;
-    padding: 14px 40px;
-}
