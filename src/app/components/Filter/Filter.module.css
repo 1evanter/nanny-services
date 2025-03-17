@@ -1,10 +1,3 @@
-.container {
-    max-width: 1184px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-}
-
 .filter {
     margin-top: 64px;
 }
