@@ -11,4 +11,10 @@
     border-radius: 30px;
     background-color: transparent;
     color: var(--text-color-white);
+
+    &:hover {
+        border: 1px solid var(--border-color);
+        background-color: transparent;
+        color: var(--text-color-white);
+    }
 }
