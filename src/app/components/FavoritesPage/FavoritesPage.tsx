@@ -6,14 +6,17 @@ import { auth, firestoreDB} from "@/app/firebase/config";
 import { collection, doc, getDoc, setDoc, deleteDoc } from "firebase/firestore";
 import { NanniesCard } from "../NanniesCard/NanniesCard";
 import { Nanny } from "@/types/nannies.types";
-import { getNannies } from "@/app/(server)/api";
+import { getFilteredNannies, getNannies } from "@/app/(server)/api";
 import styles from "./FavoritesPage.module.css"
+import { Filter } from "../Filter/Filter";
+import { SelectChangeEvent } from "@mui/material";
 
 export const FavoritesPage = () => {
   const [user] = useAuthState(auth);
   const [nannies, setNannies] = useState<Nanny[]>([]);
   const [favorites, setFavorites] = useState<string[]>([]);
-
+const [loadNannies, setLoadNannies] = useState(3);
+  const [filter, setFilter] = useState("");
    useEffect(() => {
     const fetchNannies = async () => {
       const nanniesData = await getNannies();
@@ -37,6 +40,14 @@ export const FavoritesPage = () => {
     }
   }, [user]);
 
+  const handleFilter = (e: SelectChangeEvent) => {
+    setFilter(e.target.value);
+    setLoadNannies(3);
+  };
+
+  const handleLoadMore = () => {
+    setLoadNannies(loadNannies + 3);
+  };
 
   const toggleFavorite = async (id: string) => {
     if (!user) {
@@ -60,12 +71,16 @@ export const FavoritesPage = () => {
     }
   };
 
+ const filteredNannies = getFilteredNannies(
+    nannies.filter((nanny) => favorites.includes(nanny.id)),
+    filter
+  );
+
   return (
     <div className={styles.container}>
+       <Filter handleFilter={handleFilter} filter={filter} />
           <ul className={styles.list}>
-      {nannies
-        .filter((nanny) => favorites.includes(nanny.id))
-                  .map((nanny) => (
+      {filteredNannies.slice(0, loadNannies).map((nanny) => (
             <li   key={nanny.id}>
            <NanniesCard 
   nanny={nanny} 
@@ -73,7 +88,12 @@ export const FavoritesPage = () => {
   toggleFavorite={toggleFavorite} 
                           />
                       </li>
-        ))}</ul>
+      ))}</ul>
+       {loadNannies < filteredNannies.length && (
+        <button type="button" onClick={handleLoadMore} className={styles.button}>
+          Load more
+        </button>
+      )}
     </div>
   );
 }
