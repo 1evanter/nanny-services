@@ -40,7 +40,6 @@ export const Modal = ({ children, toggleModalOpen, isModalOpen, stayOnPage }: Mo
   }, [isModalOpen]);
 
    const handleClose = () => {
-        document.body.classList.remove("modal-open");
 
         if (stayOnPage && toggleModalOpen) {
             toggleModalOpen();
