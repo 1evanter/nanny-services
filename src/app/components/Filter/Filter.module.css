@@ -1,3 +1,10 @@
+.container {
+    max-width: 1184px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
 .filter {
     margin-top: 64px;
 }
@@ -7,6 +14,11 @@
     margin-top: 8px;
     margin-bottom: 56px;
     background-color: var(--accent-color);
-    color: var(--text-color-white);
-    border-radius: 14px;
+    color: var(--text-color-white) !important;
+    border-radius: 14px !important;
+}
+
+.button {
+    margin: 64px auto;
+    padding: 14px 40px;
 }
