@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { schema } from "@/schemes/signIn"
 import {yupResolver} from "@hookform/resolvers/yup"
 import styles from "./SignIn.module.css"
+import Link from "next/link";
 
 type Inputs = {
   email: string;
@@ -44,6 +45,8 @@ export const SignIn = () => {
       {errors.email && <p className={styles.error}>{errors.email.message}</p>}
       <input {...register("password")} placeholder="Password"/>
         {errors.password && <p className={styles.error}>{errors.password.message}</p>}
+
+       <Link href="/sign-up"><p className={styles.text}>Do not have an account yet? Click here to register</p></Link> 
 
         <button className={styles.submit} type="submit">Log In</button>
       </form>
