@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import Image from 'next/image';
 import { schema } from "@/schemes/appointment";
-// import { useRouter } from "next/navigation";
 
 type MakeAnAppointmentProps = {
     nanny: Nanny;
@@ -35,8 +34,6 @@ export const MakeAnAppointment = ({toggleModalOpen, nanny: { name,
     },
     resolver: yupResolver(schema),
   });
-    
-    // const router = useRouter();
 
     const submitForm = () => {
      
