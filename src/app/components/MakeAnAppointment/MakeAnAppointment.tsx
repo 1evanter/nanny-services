@@ -53,25 +53,31 @@ export const MakeAnAppointment = ({toggleModalOpen, nanny: { name,
                     <p className={styles.nannyName}>{name}</p>
                 </div>
             </div>
-        <form onSubmit={handleSubmit(submitForm)} className={styles.form}>
+            <form onSubmit={handleSubmit(submitForm)} className={styles.form}>
+                <div className={styles.inputBox}>
                 <input  {...register('address')} type="text" placeholder="Address" />
-                {errors.address && <p className={styles.error}>{errors.address.message}</p>}
-                <input  {...register('age')} type="number" placeholder="Child's age"/>
-                {errors.age && <p className={styles.error}>{errors.age.message}</p>}
-                <input  {...register('email')} type="email" placeholder="Email"/>
-                {errors.email && <p className={styles.error}>{errors.email.message}</p>}
-                <input  {...register('name')} type="text" placeholder="Father's or mother's name" />
-                {errors.name && <p className={styles.error}>{errors.name.message}</p>}
-                <input  {...register('phone')} type="text" placeholder="Phone" />
-                {errors.phone && <p className={styles.error}>{errors.phone.message}</p>}
-                 <input
+                    {errors.address && <p className={styles.error}>{errors.address.message}</p>}
+                </div>
+               <div className={styles.inputBox}> <input  {...register('age')} type="number" placeholder="Child's age"/>
+                    {errors.age && <p className={styles.error}>{errors.age.message}</p>}
+                </div>
+               <div className={styles.inputBox}><input  {...register('email')} type="email" placeholder="Email"/>
+                    {errors.email && <p className={styles.error}>{errors.email.message}</p>}
+                </div> 
+               <div className={styles.inputBox}> <input  {...register('name')} type="text" placeholder="Father's or mother's name" />
+                    {errors.name && <p className={styles.error}>{errors.name.message}</p>}
+                </div>
+               <div className={styles.inputBox}> <input  {...register('phone')} type="text" placeholder="Phone" />
+                    {errors.phone && <p className={styles.error}>{errors.phone.message}</p>}
+                </div>
+               <div className={styles.inputBox}> <input
               {...register('time')}
               placeholder="00:00"
               type="time"
-              className={styles.time}
                 />
-                {errors.time && <p className={styles.error}>{errors.time.message}</p>}
-                <input type="text" placeholder="Comment" />
+                    {errors.time && <p className={styles.error}>{errors.time.message}</p>}
+                </div> 
+               <input type="text" placeholder="Comment" />
                 <button className={styles.submit} type="submit">Send</button>
        </form>
         </div>

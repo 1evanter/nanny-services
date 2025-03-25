@@ -32,8 +32,15 @@
     margin-top: 40px;
 }
 
+.inputBox {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
 .form input {
     color: var(--text-color-secondary);
+    width: 100%;
     padding: 16px 18px;
     border-radius: 12px;
     border: 1px solid var(--text-color-filter);
@@ -49,11 +56,6 @@
     border-color: transparent;
 }
 
-.time {
-    min-width: 232px;
-    max-height: 53.6px;
-    font-family: Inter;
-}
 
 .error {
     color: crimson;
