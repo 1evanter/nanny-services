@@ -12,11 +12,13 @@
 }
 
 .modal {
-    background: var(--text-color-white);
+    position: relative;
+    max-width: 600px;
+    max-height: 90vh;
     padding: 64px;
     border-radius: 30px;
-    max-width: 600px;
-    position: relative;
+    overflow: auto;
+    background: var(--text-color-white);
 }
 
 .closeButton {
