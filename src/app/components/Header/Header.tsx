@@ -16,7 +16,8 @@ export const Header = ({isMainPage}: { isMainPage: boolean }) => {
     })}>
             <div className={styles.container}>
             <h1 className={styles.title}>
-               <Link href="/">Nanny.Services</Link> </h1>
+                    <Link href="/">Nanny.Services</Link> </h1>
+                <div className={styles.box}>
             <nav>
                 <ul className={styles.list}>
                     <li>
@@ -31,7 +32,8 @@ export const Header = ({isMainPage}: { isMainPage: boolean }) => {
                 </ul>
             </nav>
 
-            <HeaderToolbar/>
+                    <HeaderToolbar />
+                </div>
            </div>
         </header>
     )
