@@ -36,7 +36,7 @@
     color: var(--text-color-secondary);
     padding: 16px 18px;
     border-radius: 12px;
-    border-color: transparent;
+    border: 1px solid var(--text-color-filter);
 }
 
 .submit {
@@ -47,4 +47,15 @@
     background-color: var(--accent-color);
     border-radius: 30px;
     border-color: transparent;
+}
+
+.time {
+    min-width: 232px;
+    max-height: 53.6px;
+    font-family: Inter;
+}
+
+.error {
+    color: crimson;
+    font-size: 12px;
 }

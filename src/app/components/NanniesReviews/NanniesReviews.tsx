@@ -41,7 +41,7 @@ export const NanniesReviews = ({ reviews, nanny }: NanniesReviewsProps) => {
       <button onClick={toggleModalOpen} className={styles.button} type="button">Make an appointment</button>
       </div>
       {isModalOpen && <Modal isModalOpen={ isModalOpen} toggleModalOpen={toggleModalOpen} stayOnPage={true}>
-        <MakeAnAppointment nanny={ nanny} />
+        <MakeAnAppointment nanny={nanny} toggleModalOpen={ toggleModalOpen } />
       </Modal>}
      
       </>

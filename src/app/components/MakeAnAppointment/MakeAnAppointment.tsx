@@ -1,13 +1,50 @@
 import { Nanny } from "@/types/nannies.types"
 import styles from "./MakeAnApointment.module.css"
-import Image from "next/image";
+import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import Image from 'next/image';
+import { schema } from "@/schemes/appointment";
+// import { useRouter } from "next/navigation";
 
 type MakeAnAppointmentProps = {
     nanny: Nanny;
+   toggleModalOpen: () => void;
+
 }
 
-export const MakeAnAppointment = ({ nanny:{ name,
-        avatar_url} }: MakeAnAppointmentProps) => {
+type Inputs = {
+    address: string;
+    age: string;
+    phone: string;
+    email: string;
+  name: string;
+  time: string;
+  comment?: string;
+};
+
+export const MakeAnAppointment = ({toggleModalOpen, nanny: { name,
+    avatar_url } }: MakeAnAppointmentProps) => {
+    
+       const {
+        register,
+        formState: { errors },
+        handleSubmit,
+    } = useForm<Inputs>({
+    defaultValues: {
+      phone: '+380',
+    },
+    resolver: yupResolver(schema),
+  });
+    
+    // const router = useRouter();
+
+    const submitForm = () => {
+     
+   
+      alert('Thank you for making the appointment!')
+        toggleModalOpen();
+    };
+
     return (
         <div> 
             <h2 className={styles.title}>Make an appointment with a babysitter</h2>
@@ -19,11 +56,24 @@ export const MakeAnAppointment = ({ nanny:{ name,
                     <p className={styles.nannyName}>{name}</p>
                 </div>
             </div>
-        <form className={styles.form}>
-                <input type="text" placeholder="Address"/>
-                <input type="number" placeholder="Child's age"/>
-                <input type="email" placeholder="Email"/>
-                <input type="text" placeholder="Father's or mother's name" />
+        <form onSubmit={handleSubmit(submitForm)} className={styles.form}>
+                <input  {...register('address')} type="text" placeholder="Address" />
+                {errors.address && <p className={styles.error}>{errors.address.message}</p>}
+                <input  {...register('age')} type="number" placeholder="Child's age"/>
+                {errors.age && <p className={styles.error}>{errors.age.message}</p>}
+                <input  {...register('email')} type="email" placeholder="Email"/>
+                {errors.email && <p className={styles.error}>{errors.email.message}</p>}
+                <input  {...register('name')} type="text" placeholder="Father's or mother's name" />
+                {errors.name && <p className={styles.error}>{errors.name.message}</p>}
+                <input  {...register('phone')} type="text" placeholder="Phone" />
+                {errors.phone && <p className={styles.error}>{errors.phone.message}</p>}
+                 <input
+              {...register('time')}
+              placeholder="00:00"
+              type="time"
+              className={styles.time}
+                />
+                {errors.time && <p className={styles.error}>{errors.time.message}</p>}
                 <input type="text" placeholder="Comment" />
                 <button className={styles.submit} type="submit">Send</button>
        </form>
