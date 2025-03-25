@@ -10,9 +10,11 @@ import { getFilteredNannies, getNannies } from "@/app/(server)/api";
 import styles from "./FavoritesPage.module.css"
 import { Filter } from "../Filter/Filter";
 import { SelectChangeEvent } from "@mui/material";
+import { useRouter } from "next/navigation";
 
 export const FavoritesPage = () => {
   const [user] = useAuthState(auth);
+  const router = useRouter();
   const [nannies, setNannies] = useState<Nanny[]>([]);
   const [favorites, setFavorites] = useState<string[]>([]);
 const [loadNannies, setLoadNannies] = useState(3);
@@ -51,7 +53,7 @@ const [loadNannies, setLoadNannies] = useState(3);
 
   const toggleFavorite = async (id: string) => {
     if (!user) {
-      alert("Будь ласка, увійдіть у систему, щоб додати в обране.");
+      router.push('/sign-in');
       return;
     }
     

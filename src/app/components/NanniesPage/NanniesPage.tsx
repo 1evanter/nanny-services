@@ -11,6 +11,7 @@ import { getNannies } from "@/app/(server)/api";
 import { SelectChangeEvent } from '@mui/material';
 import { getFilteredNannies } from "@/app/(server)/api";
 import { Filter } from "../Filter/Filter";
+import { useRouter } from "next/navigation";
 
 export const NanniesPage = () => {
    const [nannies, setNannies] = useState<Nanny[]>([]);
@@ -18,6 +19,7 @@ export const NanniesPage = () => {
   const [loadNannies, setLoadNannies] = useState(3);
   const [filter, setFilter] = useState('');
   const [user] = useAuthState(auth);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchNannies = async () => {
@@ -54,8 +56,8 @@ export const NanniesPage = () => {
   }
 
   const toggleFavorite = async (id: string) => {
-    if (!user) {
-      alert("Будь ласка, увійдіть у систему, щоб додати в обране.");
+     if (!user) {
+      router.push('/sign-in');
       return;
     }
 
