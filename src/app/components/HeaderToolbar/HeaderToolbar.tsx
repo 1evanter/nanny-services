@@ -4,6 +4,7 @@ import { signOut } from "firebase/auth";
 import Link from "next/link";
 import styles from "./HeaderToolbar.module.css"
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export const HeaderToolbar = () => {
   const [user] = useAuthState(auth);
@@ -25,7 +26,7 @@ export const HeaderToolbar = () => {
     } else {
   return (
             <div className={styles.buttonsContainer}>
-          <button className={styles.link}>{ user?.email}</button>
+          <div className={styles.profile}> <Image src="/icons/profile.svg" alt="profile icon" width={40} height={40}/> <p>{ user?.displayName}</p></div>
                 <button className={styles.link} onClick={() => {
               signOut(auth);
           
