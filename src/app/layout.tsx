@@ -1,16 +1,10 @@
 "use client";
 
-// import type { Metadata } from "next";
 import "./styles/globals.css"
 import { Roboto } from 'next/font/google';
 import { Header } from "./components/Header/Header";
 import { useSelectedLayoutSegment } from "next/navigation";
 
-
-// export const metadata: Metadata = {
-//   title: "Nanny.Services",
-//   description: "An app for finding babysitting services",
-// };
 
 const roboto = Roboto({
   subsets: ['latin'],
