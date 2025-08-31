@@ -4,7 +4,7 @@
 import "./styles/globals.css"
 import { Roboto } from 'next/font/google';
 import { Header } from "./components/Header/Header";
-import { usePathname } from "next/navigation";
+import { useSelectedLayoutSegment } from "next/navigation";
 
 
 // export const metadata: Metadata = {
@@ -25,8 +25,8 @@ export default function RootLayout({
   modal: React.ReactNode;
 }>) {
 
-    const pathname = usePathname();
-  const isMainPage = pathname === "/";
+   const segment = useSelectedLayoutSegment();
+  const isMainPage = segment === null;
   
   return (
     <html lang="en">
